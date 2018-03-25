@@ -2,20 +2,20 @@
 public class MergeSort {
 	private static int[] temp;
 	private static int[] array;
-	public static void mergeSort(int[] array){
+	public static void mergeSort(){
 		temp = new int[array.length];
-		divide(array, 0, array.length-1);
+		divide(0, array.length-1);
 	}
 	
-	private static void divide(int[] array, int leftStart, int rightEnd){
+	private static void divide(int leftStart, int rightEnd){
 		if(leftStart >= rightEnd) return;
 		int middle = (rightEnd + leftStart) / 2;
-		divide(array, leftStart, middle);
-		divide(array, middle+1, rightEnd);
-		merge(array, leftStart, middle, rightEnd);
+		divide(leftStart, middle);
+		divide(middle+1, rightEnd);
+		merge(leftStart, middle, rightEnd);
 	}
 	
-	private static void merge(int[] array, int leftStart, int mid, int rightEnd){
+	private static void merge(int leftStart, int mid, int rightEnd){
 		for(int i=leftStart ; i<=rightEnd ; i++){
 			temp[i] = array[i];
 		}
@@ -52,7 +52,7 @@ public class MergeSort {
 	public static void main(String[] args) {
 		int[] test = {5,3,6,1,0,2};
 		array = test;
-		mergeSort(array);
+		mergeSort();
 		for(int i=0 ; i<array.length ; i++){
 			System.out.print(array[i]+" ");
 		}
